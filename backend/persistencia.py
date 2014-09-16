@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-from pymongo import Connection
+#from pymongo import Connection
+from pymongo import MongoClient
 
 
 class Persistencia():
 
-    def __init__(self):
-        self.conn = Connection()  # Conexion local por defecto
+    def __init__(self, url, user, password):
+        #self.conn = Connection()  # Conexion local por defecto
+        self.conn = MongoClient(url)
+        self.conn.admin.authenticate(user, password)
         self.db = self.conn.PPT
         self.billetera = self.db.billetera
 
