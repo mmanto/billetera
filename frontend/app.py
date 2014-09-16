@@ -4,7 +4,6 @@ from flask import request
 from flask import Flask, Blueprint
 from flask_environments import Environments
 
-from frontend.views.plansView import PlanView
 from frontend.views.solicitudView import SolicitudView
 
 from backend.persistencia import Persistencia
