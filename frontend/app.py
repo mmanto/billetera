@@ -30,7 +30,7 @@ def solicitud():
 def procesar_solicitud():
     
     solicitud = Solicitud(request.form)
-    p = Persistencia()
+    p = Persistencia('190.188.234.6', 'admin', 'admin2k14')
     sol = Util.asDic(solicitud)
     p.insert(sol)
     
