@@ -1,0 +1,467 @@
+<html><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width" />
+
+    <title>Pay per TIC</title>
+    <link href="../static/css/styles.css" rel="stylesheet" type="text/css" />
+
+    <link href="../static/css/qr.css" rel="stylesheet" type="text/css" />
+
+    <!--[if IE]> <link href="css/ie.css" rel="stylesheet" type="text/css"> <![endif]-->
+    <script src="static/js/jqBootstrapValidation.js">
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/charts/excanvas.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/charts/jquery.flot.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/charts/jquery.flot.orderBars.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/charts/jquery.flot.pie.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/charts/jquery.flot.resize.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/charts/jquery.sparkline.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/tables/jquery.dataTables.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/tables/jquery.sortable.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/tables/jquery.resizable.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.autosize.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.uniform.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.inputlimiter.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.tagsinput.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.maskedinput.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.autotab.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.select2.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.dualListBox.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.cleditor.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.ibutton.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.validationEngine-en.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.validationEngine.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/uploader/plupload.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/uploader/plupload.html4.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/uploader/plupload.html5.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/uploader/jquery.plupload.queue.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/wizards/jquery.form.wizard.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/wizards/jquery.validate.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/wizards/jquery.form.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.collapsible.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.breadcrumbs.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.tipsy.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.progress.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.timeentry.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.colorpicker.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.jgrowl.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.fancybox.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.fileTree.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.sourcerer.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/others/jquery.fullcalendar.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/others/jquery.elfinder.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/forms/jquery.mousewheel.js">
+    </script>
+    <script type="text/javascript" src="../static/js/plugins/ui/jquery.easytabs.min.js">
+    </script>
+    <script type="text/javascript" src="../static/js/files/bootstrap.js">
+    </script>
+    <script type="text/javascript" src="../static/js/files/functions.js">
+    </script>
+    <script type="text/javascript" src="../static/js/bootstrap-modal.js">
+    </script>
+    <script type="text/javascript" src="../static/js/qr.js">
+    </script>
+    <script type="text/javascript" src="../static/js/charts/chart.js">
+    </script>
+    <script type="text/javascript" src="../static/js/charts/hBar_side.js">
+    </script>
+    <link rel="stylesheet" href="../static/css/reset.css" media="screen" />
+    <link rel="stylesheet" href="../static/css/invoice.css" media="screen" />
+
+    <!-- give life to HTML5 objects in IE -->
+    <!--[if lte IE 8]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!-- js HTML class -->
+    <script>
+        (function(H) {
+            H.className=H.className.replace(/\bno-js\b/,'js')
+        })(document.documentElement)
+        function rejected() {
+            $("#rejected").css("display", "block");
+        }
+    </script>
+    </head>
+    <body>
+        <div id="top">
+            <div class="wrapper">
+                <a href="dashboard" title="" class="logo">Pay per TIC</a>
+                <!-- Right top nav -->
+                <div class="topNav">
+                    <ul class="userNav">
+
+                        <li>
+                            <a href="../dashboard" title="" class="screen"></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Responsive nav -->
+            </div>
+        </div>
+        <!-- begin markup -->
+        <br/>
+        <br/>
+        <br/>
+
+        <div id="invoice" class="new">
+
+            <header id="header">
+                <div class="invoice-intro">
+                    <h1>Rechazados</h1>
+                </div>
+                <div style="width:50%; float:left; text-align:left;">
+                    <h4>{{session['commerce'].name}}</h4>
+                    <dt class="invoice-date">
+                        Cuit:
+                        <strong class="red">{{session['commerce'].taxId|safe}}</strong>
+                    </dt>
+                    <dt class="invoice-due">
+                        Email:
+                        <strong class="red">{{session['commerce'].email|safe}}</strong>
+                    </dt>
+                    </dl>
+                </div>
+                <dl class="invoice-meta">
+                    <dt class="invoice-date">
+                        Año:
+                    </dt>
+                    <dd>
+                        2013
+                    </dd>
+                    <dt class="invoice-due">
+                        fecha:
+                    </dt>
+                    <dd>
+                        02-10-2012
+                    </dd>
+                </dl>
+            </header>
+            <div class="widget chartWrapper">
+                <div class="whead">
+                    <h6>Charts</h6>
+                </div>
+                <div class="body">
+                    <div class="chart">
+                    </div>
+                </div>
+            </div>
+            <div class="widget">
+                <div class="whead">
+                    <h6>Marzo</h6>
+                    <div class="titleOpt">
+                        <a data-toggle="dropdown" href="#">
+                        <span data-icon="" class="iconb"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                               <input type="button" id="btnExport" value=" Export Table data into Excel " />
+                            </li>
+                            <li>
+                                <a class="" href="#">
+                                <span class="icos-pdf"></span>Descargar a PDF
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="#">
+                                <span class="icos-printer"></span>Imprimir
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="body">
+
+
+
+                    <ul class="wInvoice">
+
+                        <li>
+                            <h4 class="green">4</h4>
+                            <span>Rechazados</span>
+                        </li>
+                        <li>
+                            <h4 class="blue">$218,518</h4>
+                            <span>importe Total</span>
+                        </li>
+                        <li>
+                            <h4 class="red">
+                            <a href="#" class="red" onclick="javascript:rejected()">Numero de Tarjeta inexistente</a>
+                            </h4>
+                            <span>Motivo de Rechazo</span>
+                        </li>
+                    </ul>
+                    <ul class="wInvoice">
+                        <li>
+                            <h4 class="green">4</h4>
+                            <span>Rechazados</span>
+                        </li>
+                        <li>
+                            <h4 class="blue">$218,518</h4>
+                            <span>importe Total</span>
+                        </li>
+                        <li>
+                            <h4 class="red">
+                            <a href="#" class="red" onclick="javascript:rejected()" >Sin fondos</a>
+                            </h4>
+                            <span>Motivo de Rechazo</span>
+                        </li>
+                    </ul>
+                    <div class="invoice-items" id="rejected" style="display:none;">
+                        <div id="dvData">
+                        <table>
+                            <caption>
+                                Numero de Tarjeta inexistente
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th>Socio / Cliente</th>
+                                    <th>Nro tarjeta / CBU</th>
+                                    <th>Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Romulan Warbird</th>
+                                    <td>xxxxxxxxxxxxxx2323</td>
+                                    <td>$36,000</td>
+                                </tr>
+                                <tr>
+                                    <th>Romulan Warbird</th>
+                                    <td>xxxxxxxxxxxxxx2323</td>
+                                    <td>$36,000</td>
+                                </tr>
+                                <tr>
+                                    <th>Romulan Warbird</th>
+                                    <td>xxxxxxxxxxxxxx2323</td>
+                                    <td>$36,000</td>
+                                </tr>
+                                <tr>
+                                    <th>Romulan Warbird</th>
+                                    <td>xxxxxxxxxxxxxx2323</td>
+                                    <td>$36,000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Total:</td>
+                                    <td>$36,000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <br/>
+                    </div><!-- e: invoice items -->
+                </div>
+                 </div>
+
+
+                            <script>
+                                $("#btnExport").click( function(e) {
+                                    window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+                                    e.preventDefault();
+                                });
+
+                            </script>
+            </div>
+            <div class="fluid">
+                <div class="widgetS">
+                    <div class="whead">
+                        <h6>Total rechazados</h6>
+                    </div>
+                    <div class="fluid">
+
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span class="iconb">Enero</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span  class="iconb">Febrero</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span  class="iconb">Marzo</span>
+                                <span>
+                                    8
+                                    <br/>
+                                    $380,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span  class="iconb">Abril</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span  class="iconb">Mayo</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li >
+                                <a title="Add an article" href="#" class="bRed">
+                                <span  class="iconb" class="bRed">Junio</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fluid">
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span class="iconb">Julio</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li >
+                                <a class="bRed" title="Add an article" href="#">
+                                <span class="iconb">Agosto</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span  class="iconb" class="redBack">Septiembre</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span class="iconb">Octubre</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span  class="iconb">Noviembre</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="middleNavA grid2">
+                            <li>
+                                <a title="Add an article" href="#">
+                                <span  class="iconb">Diciembre</span>
+                                <span>
+                                    6
+                                    <br/>
+                                    $90,00
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            <br/>
+            <br/>
+    </body>
+</html>

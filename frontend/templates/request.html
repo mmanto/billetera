@@ -1,0 +1,37 @@
+<form id="requestForm" action="/frontend/procesar-solicitud" method="post">
+    <p>
+        <label for="nombre">Nombre de Institucion</label>
+            <input id="institucion" name="institucion"type="text" ><br>
+        <label for="contacto">Persona de Contacto</label>
+            <input id="contacto" name="contacto" type="text"><br>
+        <label for="telefono">Telefono</label>
+            <input id="telefono" name="telefono" type="text"><br>
+        <label for="email">Email</label>
+            <input id="email" name="email" type="text"><br>
+     </p>
+     <p>
+     <label for="nombrePagador">Nombre del pagador</label>
+             <input id="nombrePagador" name="nombrePagador" type="text"><br>
+         <label for="emailPagador">Correo del pagador</label>
+             <input id="emailPagador" name="emailPagador" type="text"><br>
+         <label for="medioPago">Medio de pago</label>
+         <select id="medioPago" name="medioPago">
+             <option value="TarjetaDebito">Tarjeta de débito</option>
+             <option value="TarjetaCredito">Tarjeta de crédito</option>
+             <option value="PayPal">PayPay</option>
+             <option value="Descubierto" selected>Descubierto</option>
+         </select><br>
+         <label for="concepto">Concepto</label>
+             <input id="concepto" name="concepto" type="text"><br>
+         <label for="importe">Importe</label>
+             <input id="importe" name="importe" type="text"><br>
+        <label for="fechaVencimiento">Fecha de vencimiento</label>
+             <input id="fechaVencimiento" name="fechaVencimiento" type="date"><br>
+        <label for="datosDelMedio">Datos del medio a usar</label>
+              <input id="datosDelmedio" name="datosDelMedio" type="text"><br>
+         <label for="cbuCobrador">CBU del cobrador</label>
+             <input id="cbuCobrador" name="cbuCobrador" type="text"><br>
+         </p>
+         <input type="submit" value="Enviar" >
+
+</form>

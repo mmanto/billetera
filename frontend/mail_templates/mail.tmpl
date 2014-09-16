@@ -1,0 +1,20 @@
+<html>
+	<head>
+
+	</head>
+
+	<body>
+		<h1>Titulo: $title</h1>
+		<p>
+			Contenido: $contents
+		</p>
+		<table>
+                #for $link in $links
+                <tr>
+                  <td><a href="$link.url">$link.label</a></td>
+                </tr>
+                #end for
+              </table>
+        	</body>
+
+</html>
