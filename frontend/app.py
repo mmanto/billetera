@@ -34,7 +34,7 @@ def procesar_solicitud():
     sol = Util.asDic(solicitud)
     p.insert(sol)
     
-    emailContacto = request.form['email']
+    emailContacto = request.form['emailPagador']
     
     email = EMail('smtp.gmail.com','587')
     email.sendMailFromTemplate('prueba.mmanto@gmail.com',
