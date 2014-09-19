@@ -1,9 +1,12 @@
 from flask import Flask
 from frontend.app import frontend_bp
-#from backend.app import backoffice_bp
+from backend.persistencia import Persistencia
 from flask_environments import Environments
 
+from b_logic.business import Billetera
 
+billetera = Billetera()
+persistencia = Persistencia('190.188.234.6', 'admin', 'admin2k14')
 app = Flask(__name__)
 
 env = Environments(app)

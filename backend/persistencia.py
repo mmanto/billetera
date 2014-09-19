@@ -28,8 +28,3 @@ class Persistencia():
         response = self.billetera.find()
         return response
 
-class Util:
-
-    @classmethod
-    def asDic(cls, object):
-        return object.__dict__

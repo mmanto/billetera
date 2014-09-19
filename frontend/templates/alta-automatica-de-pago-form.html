@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/styles.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../static/css/bootstrap-datetimepicker.min.css" />
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../static/js/moment.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap-datetimepicker.min.css">
+<script type="text/javascript" src="../static/js/bootstrap-datetimepicker.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link href="../static/favicon.ico" rel="shortcut icon" type="../static/image/vnd.microsoft.icon" />
+<title>Alta automática de pago</title>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".form-group a").tooltip({
+        placement : 'top'
+    });
+});
+</script>
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}    
+</script>
+<script type="text/javascript">
+$(window).load(function(){
+	$('#datetimepicker1').datetimepicker({
+		pickDate: true,
+		pickTime: false,
+		useCurrent: true,
+		showToday: true,
+		language:'es',
+	});
+});
+</script>
+
+</head>
+
+<body>
+<form role="form" action="/frontend/procesar-solicitud" method="post" class="col-md-12">
+  <input type="hidden" name="redirect" value="http://www.paypertic.com.ar">
+  <div class="row-clearfix">
+    <div class="modal-header">
+      <p class="alert alert-warning"><small>No cierre esta ventana si está en proceso de alta, y aún no ha enviado el formulario, de lo contrario perderá los datos ingresados.</small></p>
+      <h4 class="modal-title" id="formulario">Solicitud para pagar mediante Pay per TIC, por favor, ingrese los datos.</h4>
+    </div>
+    <div class="modal-body">
+      <div id="accordion1" class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="#entidad" data-parent="#accordion1" data-toggle="collapse"><span class="badge">1</span> Datos de la entidad Cobradora</a></h4>
+          </div>
+          <div class="panel-collapse collapse in" id="entidad">
+            <div class="panel-body">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="nombre">* Nombre</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-bank"></i></div>
+                  <input type="text" placeholder="Ingrese el Nombre de la institución" id="nombre-de-institucion" name="nombre-de-institucion" class="form-control" required >
+                </div></div>
+                <div class="form-group">
+                <label for="persona-de-contacto">* Contacto</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                  <input type="text" placeholder="Ingrese la persona de contacto" id="persona-de-contacto" name="persona-de-contacto" class="form-control" required >
+                </div></div>
+                <div class="form-group">
+                <label for="telefono">* Teléfono</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                  <input type="text" placeholder="Ingrese un teléfono" id="telefono-institucion" name="telefono-institucion" class="form-control" required >
+                </div></div>
+                <div class="form-group">
+                <label for="email">* Email</label>
+                <div class="input-group">
+                <div class="input-group-addon">@</div>
+                  <input type="email" placeholder="Ingrese un email" id="email-institucion" name="email-institucion" class="form-control" required >
+                </div></div>
+                <div class="form-group">
+                 <label for="relacion">* Relación con el contacto o Entidad (Socio N°, cliente, otro?)</label>
+                 <input type="text" placeholder="Relación con el contacto o Entidad" id="relacion" name="relacion" class="form-control" required >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="#encargado" data-parent="#accordion1" data-toggle="collapse"><span class="badge">2</span> Sus datos</a></h4>
+          </div>
+          <div class="panel-collapse collapse" id="encargado">
+            <div class="panel-body">
+              <div class="col-md-6 col-sm-12">
+                
+                <p>Usuario Pay per TIC:</p>
+                <div>
+                <label>Si</label><input name="user-paypertic" type="radio" id="user-paypertic" value="SI" /> 
+                <label>No</label><input type="radio" name="user-paypertic" id="user-paypertic" value="NO" />
+                </div>
+                <div class="form-group">
+                  <label for="email">* Email</label>
+                <div class="input-group">
+                <div class="input-group-addon">@</div>
+                  <input type="email" placeholder="Ingrese un email" id="email-pagador" name="email-pagador" class="form-control" required >
+                </div></div>
+                <div class="form-group">
+                  <label for="clave">* Clave</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                  <input type="password" placeholder="Ingrese su contraseña" id="clave" name="clave" class="form-control" required >
+                </div></div>
+
+              
+              </div>
+                              
+              <div class="col-md-6 col-sm-12">
+              
+                <p>Registrese con estos mismos datos que ya estan</p>
+                
+                <div class="form-group">
+                  <label for="entidad">* Entidad <span class="badge">Sólo si no esta registrado</span></label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-bank"></i></div>
+                  <input type="text" placeholder="Ingrese el Nombre de la entidad" id="entidad" name="entidad" class="form-control" >
+                </div></div>
+                <div class="form-group">
+                  <label for="nombre">* Nombre <span class="badge">Sólo si no esta registrado</span></label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                  <input type="text" placeholder="Nombre" id="nombre" name="nombre" class="form-control" >
+                </div></div>
+                <div class="form-group">
+                  <label for="telefono">* Teléfono <span class="badge">Sólo si no esta registrado</span></label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                  <input type="text" placeholder="Ingrese un teléfono" id="telefono" name="telefono" class="form-control" >
+                </div></div>
+              
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="#elpago" data-parent="#accordion1" data-toggle="collapse"><span class="badge">3</span> El pago</a></h4>
+          </div>
+          <div class="panel-collapse collapse" id="elpago">
+            <div class="panel-body">
+              <div class="col-md-12">
+                <p>Indique si es pago único o mensual</p>
+                <div class="form-group">
+                  <label for="concepto-pago">Concepto</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-question-circle"></i></div>
+                  <input type="text" placeholder="Ingrese el concepto" id="concepto-pago" name="concepto-pago" class="form-control" >
+                </div></div>
+                <div class="form-group">
+                  <label for="importe-pago">Importe</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-money"></i></div>
+                  <input type="text" placeholder="Ingrese el importe" id="importe-pago" name="importe-pago" class="form-control" >
+                </div></div>
+
+                
+                <div class="form-group">
+                  <label for="fecha-pago">Fecha de pago <a href="#" data-toggle="tooltip" data-original-title="Seleccione la fecha de pago"><i class="fa fa-info-circle"></i></a></label>
+                  <div class="input-group">
+                  <div class="input-group date" id="datetimepicker1">
+					<input type="text" class="form-control" id="fecha-pago" name="fecha-pago" data-date-format="YYYY/MM/DD" />
+					<span class="input-group-btn"><button class="btn btn-info" type="button"><i class="fa fa-calendar"></i></button></span>
+				</div>
+                </div></div>
+                <div class="form-group">
+                  <label for="periodicidad-pago">Periodicidad</label>
+                          <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
+        <select id="periodicidad-pago" name="periodicidad-pago" class="form-control">
+          <!--<option>Diaria</option>
+          <option>Semanal</option>-->
+          <option selected>Mensual</option>
+          <!--<option>Bimensual</option>
+          <option>Trimestral</option>
+          <option>Cuatrimestral</option>
+          <option>Semestral</option>
+          <option>Anual</option>-->
+        </select>
+                </div>
+                <p></p>
+                <div class="form-group">
+                  <label for="num-medio-pago">Número de medio de pago</label>
+                <div class="input-group">
+                <div class="input-group-addon"><b>Nº</b></div>
+                  <input type="text" placeholder="Ingrese el Nº de medio de pago" id="num-medio-pago" name="num-medio-pago" class="form-control" >
+                </div></div>
+                <!-- medios de pago -->
+                <h4>Medio de pago deseado(*)</h4>
+                <ul role="tablist" class="nav nav-tabs" id="myTab">
+                  <li class="active"><a data-toggle="tab" role="tab" href="#medios-de-pago">Medios de pago</a></li>
+                  <li class=""><a data-toggle="tab" role="tab" href="#mas-medios">Más medios de pago</a></li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div id="medios-de-pago" class="tab-pane fade active in">
+                    <div class="col-md-12 text-center">
+                      <p>&nbsp;</p>
+                      <div class="form-group">
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="cbu" type="radio" checked="" value="cbu" name="medioId">
+                            <img src="../static/img/ico-cbu.png" alt=""> </label>
+                        </div>
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="visa" type="radio" value="visa" name="medioId">
+                            <img src="../static/img/ico-visa.png" alt=""> </label>
+                        </div>
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="mastercard" type="radio" value="mastercard" name="medioId">
+                            <img src="../static/img/ico-mastercard.png" alt=""> </label>
+                        </div>
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="aexpress" type="radio" value="aexpress" name="medioId">
+                            <img src="../static/img/ico-aexpress.png" alt=""> </label>
+                        </div>
+                        <!--<div class="radio-inline bot">
+        	<label class="bot btn btn-default">
+        		<input id="pagofacil" type="radio" value="pagofacil" name="medioId">
+        		<img src="img/ico-pagofacil.png" alt="">
+        	</label>
+        </div>--> 
+                      </div>
+                    </div>
+                  </div>
+                  <div id="mas-medios" class="tab-pane fade">
+                    <div class="col-md-12 text-center">
+                      <p>&nbsp;</p>
+                      <div class="form-group">
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="electron" type="radio" value="electron" name="medioId">
+                            <img src="../static/img/ico-electron.png" alt=""> </label>
+                        </div>
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="maestro" type="radio" value="maestro" name="medioId">
+                            <img src="../static/img/ico-maestro.png" alt=""> </label>
+                        </div>
+                        <!--<div class="radio-inline bot">
+        	<label class="bot btn btn-default">
+        		<input id="naranja" type="radio" value="naranja" name="medioId">
+        		<img src="img/ico-naranja.png" alt="">
+        	</label>
+        </div>-->
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="cabal" type="radio" value="cabal" name="medioId">
+                            <img src="../static/img/ico-cabal.png" alt=""> </label>
+                        </div>
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="diners" type="radio" value="diners" name="medioId">
+                            <img src="../static/img/ico-diners.png" alt=""> </label>
+                        </div>
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="cencosud" type="radio" value="cencosud" name="medioId">
+                            <img src="../static/img/ico-cencosud.png" alt=""> </label>
+                        </div>
+                        <div class="radio-inline bot">
+                          <label class="bot btn btn-default">
+                            <input id="shopping" type="radio" value="shopping" name="medioId">
+                            <img src="../static/img/ico-shopping.png" alt=""> </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- medios de pago -->
+                <p>&nbsp;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <p>&nbsp;</p>
+    <button class="btn btn-info btn-lg" type="submit">Pagar</button>
+    <p>&nbsp;</p>
+  </div>
+  </div>
+  </div>
+</form>
+<script type="text/javascript" src="../static/js/bootstrap-datetimepicker.min.js"></script>
+</body>
+</html>

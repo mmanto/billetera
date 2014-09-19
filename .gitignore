@@ -1,0 +1,8 @@
+# Ignores
+*.pyc
+\.DS_Store
+\.classpath
+\.project
+\.settings
+\.metadata/
+/nbproject/private/

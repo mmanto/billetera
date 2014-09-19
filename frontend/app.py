@@ -3,52 +3,30 @@ from flask import render_template
 from flask import request
 from flask import Flask, Blueprint
 from flask_environments import Environments
-
-from frontend.views.solicitudView import SolicitudView
-
-from backend.persistencia import Persistencia
-from backend.persistencia import Util
-from backend.mail_util import EMail
-
-from b_logic.model import Solicitud
-
+from runserver import Billetera
 
 app = Flask(__name__)
 
 env = Environments(app)
 env.from_object('billetera')
-frontend_bp = Blueprint('frontend', __name__,
-template_folder='templates', static_folder="static")
+frontend_bp = Blueprint('frontend', __name__, template_folder='templates', static_folder="static")
 
 
 @frontend_bp.route('/solicitud/')
 def solicitud():
-    return render_template('request.html')
+    return render_template('alta-automatica-de-pago-form.html')
+
+
+@frontend_bp.route('/entidad-cobradora/')
+def entidad_cobradora():
+    return render_template('alta-entidad-cobradora-form.html')
 
 
 @frontend_bp.route('/procesar-solicitud', methods=['POST', 'GET'])
 def procesar_solicitud():
-    
-    solicitud = Solicitud(request.form)
-    p = Persistencia('190.188.234.6', 'admin', 'admin2k14')
-    sol = Util.asDic(solicitud)
-    p.insert(sol)
-    
-    emailContacto = request.form['emailPagador']
-    
-    email = EMail('smtp.gmail.com','587')
-    email.sendMailFromTemplate('prueba.mmanto@gmail.com',
-                               emailContacto,
-                               '',
-                               'Correo de confirmación',
-                               'prueba.mmanto',
-                               'prueba.mmanto2k14',
-                               {'title': 'Por favor seleccione el enlace para confirmar su cuenta en MisPagos',
-                                'contents': 'Este es el contenido',
-                                'links': [{'url' : 'www.google.com','label' : 'Ir a google...'}]},
-                                'frontend/mail_templates/mail.tmpl')
 
-
+    billetera.generarSolicitudPago(request.form)    
+   
     return render_template('result_request.html', d=request.form)
 
 
